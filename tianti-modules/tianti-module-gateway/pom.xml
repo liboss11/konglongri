@@ -11,4 +11,7 @@
     <packaging>war</packaging>
     <name>tianti-module-gateway</name>
     <description>tianti-module-gateway</description>
+    <build>
+        <finalName>tianti-module-gateway</finalName>
+    </build>
 </project>
