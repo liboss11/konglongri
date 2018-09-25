@@ -8,6 +8,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +26,10 @@ import com.jeff.tianti.common.dto.AjaxResult;
 @Controller
 @RequestMapping("/upload")
 public class UploadController {
+
+    @Value("${static.file.upload.path}")
+    public String filePath;
+    //public final static String filePath = "/home/data/konglong/uploads";
 
     public final static String ATTACH_SAVE_PATH = "attach";
 
@@ -72,7 +77,13 @@ public class UploadController {
     // 接受图片，返回文件地址
     private String storeIOc(HttpServletRequest request, MultipartFile file) {
         String result = "";
-        String realPath = request.getSession().getServletContext().getRealPath("uploads");
+        //String realPath = request.getSession().getServletContext().getRealPath("uploads");
+        String realPath = filePath;
+        System.out.println(filePath);
+        if (realPath == null) {
+            System.out.println("上传路径为空");
+            return null;
+        }
         if (file == null) {
             return null;
         }
@@ -91,6 +102,11 @@ public class UploadController {
                     // /**使用UUID生成文件名称**/
                     logImageName = UUID.randomUUID().toString() + suffix;
 
+                    fileName = realPath + File.separator + ATTACH_SAVE_PATH;
+                    File dir = new File(fileName);
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
                     fileName = realPath + File.separator + ATTACH_SAVE_PATH + File.separator + logImageName;
                     File restore = new File(fileName);
                     try {

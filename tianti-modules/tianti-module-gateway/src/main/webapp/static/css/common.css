@@ -592,7 +592,7 @@ a.abtn.default {
 
 .J_detail {
     padding: 30px;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
 }
 
 .J_detail .d_header {

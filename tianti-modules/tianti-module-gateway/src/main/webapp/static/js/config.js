@@ -1,8 +1,11 @@
 ﻿/// <reference path="common.js" />
 //定义几个项目的全局变量[如果用户修改了项目的名称，请更新以下几个变量]
-var tiantiAdminName = 'tianti-module-admin';
-var tiantiInterfaceName = 'tianti-module-interface';
-var tiantiGateway = 'tianti-module-gateway';
+//var tiantiAdminName = 'tianti-module-admin';
+var tiantiAdminName = '';
+//var tiantiInterfaceName = 'tianti-module-admin';
+var tiantiInterfaceName = '';
+//var tiantiGateway = 'tianti-module-gateway';
+var tiantiGateway = '';
 
 window.isLocalhost = window.location.hostname == "localhost";
 window.ctx = "";
@@ -20,11 +23,11 @@ window.static = window.ctx + "static/";
 window.notImgUrl = window.static + "images/img_null.png";
 
 //window.server = window.location.protocol + "//" + window.location.host + "/";
-window.server = window.location.protocol + "//api.konglongri.cn:8080/";
-window.serverPath = window.server + tiantiInterfaceName + "/";
+window.server = window.location.protocol + "//admin.starslau.com/";
+window.serverPath = window.server + tiantiInterfaceName + "";
 //后台上传的图片地址
 //window.serverUploadPath = window.server + tiantiAdminName + "/";
-window.serverUploadPath = window.location.protocol + "//admin.konglongri.cn:8080/" + tiantiAdminName + "/";
+window.serverUploadPath = window.location.protocol + "//admin.starslau.com/" + tiantiAdminName + "/";
 
 jc.require.url.push(window.static + "js/jquery.pagination.js");
 jc.require.url.push(window.static + "js/jquery.nicescroll.min.js");

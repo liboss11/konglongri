@@ -5,7 +5,7 @@
     html += '<div class="h_title">' + this.getString(data.title) + '</div>';
     html += '<div class="h_intro">';
     html += '<span style="color:#576b95">' + (this.getString(data.publisher)) + '</span>';
-    html += '<span>' + (jc.tools.formatDate(data.createDate, 'yyyy-MM-dd hh:mm:ss')) + '</span>';
+    html += '<span>' + (jc.tools.formatDate(data.createDate, 'yyyy-MM-dd')) + '</span>';
     /* html += '<span>编辑于：' + (jc.tools.formatDate(data.updateDate, 'yyyy-MM-dd hh:mm:ss')) + '</span>';*/
     /* html += '<span>查看次数：' + (data.viewCount) + '次</span>';*/
     html += '</div>';

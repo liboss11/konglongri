@@ -9,7 +9,7 @@
 
     <context-param>
         <param-name>spring.profiles.default</param-name>
-        <param-value>production</param-value><!-- development production -->
+        <param-value>development</param-value><!-- development production -->
     </context-param>
 
     <context-param>
@@ -89,6 +89,11 @@
     <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--mvc的配置文件，最好在这里配置一下，以免找不文件而报错-->
+            <param-value>classpath:springmvc-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

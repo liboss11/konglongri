@@ -80,6 +80,7 @@
                 /do_login = anon
                 /login = anon
                 /forget**/** = anon
+                /**/api/** = anon
                 /** = rememberAuthFilter
             </value>
         </property>

@@ -19,7 +19,7 @@ jc.data.setup(function (data) {
         var $div = $("<div>");
         $div.html(curList.content);
         var filterContent = $div.text();
-        html += '<div onclick="window.router(\'menuAndDetail2\',{ rootColumnId:\'' + window.rootColumnId + '\',columnListId:\'' + columnListId + '\',articleId:\'' + curList.id + '\' });" class="l_item ' + (firstClass) + '">';
+        html += '<div onclick="window.router(\'menuAndDetail\',{ rootColumnId:\'' + window.rootColumnId + '\',columnListId:\'' + columnListId + '\',articleId:\'' + curList.id + '\' });" class="l_item ' + (firstClass) + '">';
         html += '<img src="' + (curList.coverImageUrl ? window.serverUploadPath + curList.coverImageUrl : window.notImgUrl) + '">';
         html += '<a class="i_link" href="javascript:;">' + (this.getString(curList.title)) + '</a>';
         html += '<span class="i_time">' + (jc.tools.formatDate(curList.updateDate)) + '</span>';
