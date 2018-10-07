@@ -23,11 +23,11 @@ window.static = window.ctx + "static/";
 window.notImgUrl = window.static + "images/img_null.png";
 
 //window.server = window.location.protocol + "//" + window.location.host + "/";
-window.server = window.location.protocol + "//admin.starslau.com/";
+window.server = window.location.protocol + "//admin.konglongri.cn/";
 window.serverPath = window.server + tiantiInterfaceName + "";
 //后台上传的图片地址
 //window.serverUploadPath = window.server + tiantiAdminName + "/";
-window.serverUploadPath = window.location.protocol + "//admin.starslau.com/" + tiantiAdminName + "/";
+window.serverUploadPath = window.location.protocol + "//admin.konglongri.cn/" + tiantiAdminName + "/";
 
 jc.require.url.push(window.static + "js/jquery.pagination.js");
 jc.require.url.push(window.static + "js/jquery.nicescroll.min.js");
