@@ -73,6 +73,7 @@ public class CmsController {
         model.addAttribute("rootCoulumnInfoList", rootCoulumnInfoList);
 
         return "/cms/column_default_list";
+        //return "/cms/column_list";
     }
 
     /**

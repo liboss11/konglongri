@@ -172,7 +172,7 @@ jc.uiExtend("footer", {
         html += '<div class="container">';
         html += '<div class="row">';
         html += '<div class="col-md-5 col-sm-12">';
-        html += '<h4>关于 天梯</h4>';
+        html += '<h4>关于 亲子小窝</h4>';
         html += '<p class="mt20"><i class="icon"></i>地址：广东省广州市天河区五山路381号</p>'
         html += '<p><i class="icon"></i>邮箱：xuzhexu@139.com</p>'
         html += '</div>';
@@ -204,7 +204,7 @@ jc.uiExtend("footer", {
         html += '</div>';
         html += '<div class="copy-right">';
         html += '<span>© 2013-2017</span>';
-        html += '版权所有 天梯 Copyright © 1998 - 2017 Tencent. All Rights Reserved';
+        html += '版权所有 亲子小窝 Copyright © 1998 - 2017 Tencent. All Rights Reserved';
         html += '<span>粤公网安备11010802014853</span>';
         html += '</div>';
         html += '</div>';

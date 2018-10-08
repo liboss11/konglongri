@@ -113,6 +113,10 @@ public class ArticleDaoImpl extends CustomBaseSqlDaoImpl implements ArticleDaoCu
                 hql.append(" and t.createDate  <= :endDate ");
                 map.put("endDate", articleQueryDTO.getEndDate());
             }
+            if (articleQueryDTO.getIsTop() != null) {
+                hql.append(" and t.isTop <= :isTop ");
+                map.put("isTop", articleQueryDTO.getIsTop());
+            }
             if (articleQueryDTO.getIsFront() != null && articleQueryDTO.getIsFront()) {
                 //前端默认查询审核通过的且未删除的记录，且按照置顶和时间降序排序
                 hql.append(" and t.isAudit =1  order by t.isTop desc,t.createDate desc ");
@@ -123,7 +127,7 @@ public class ArticleDaoImpl extends CustomBaseSqlDaoImpl implements ArticleDaoCu
                     } else if (articleQueryDTO.getType().equals("zhiding")) {
                         hql.append(" and t.isTop =1 ");
                     }
-                    hql.append(" order by t.createDate desc ");
+                    hql.append(" order by t.updateDate desc ");
                 }
             }
         }

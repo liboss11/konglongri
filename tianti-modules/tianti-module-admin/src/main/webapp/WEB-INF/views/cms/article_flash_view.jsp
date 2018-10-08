@@ -4,7 +4,7 @@
 <%@ include file="../common/common.jsp" %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>开启Flash-天梯管理系统</title>
+    <title>开启Flash-亲子小窝管理系统</title>
 </head>
 <body>
 <p>因为Google系列浏览器默认是没开启Flash控件的，uploadify目前需要用到Flash。</p>

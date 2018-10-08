@@ -13,6 +13,8 @@
 <script src="${ctx }/static/js/common.js"></script>
 <script src="${ctx }/static/js/uiExtend.js"></script>
 <script src="${ctx }/static/js/jquery.nicescroll.min.js"></script>
+<script src="${ctx }/static/js/jquery.qrcode.min.js"></script>
+
 
 <script src="${ctx }/static/plugins/layer/layer.js"></script>
 <script type="text/javascript" src="${ctx }/static/plugins/laypage/laypage.js"></script>

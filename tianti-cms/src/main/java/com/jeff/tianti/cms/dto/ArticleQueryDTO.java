@@ -42,6 +42,9 @@ public class ArticleQueryDTO extends CommonQueryDTO {
     //按发布日期排序样式：up为升序，down为降序
     private String createDateSortCss;
 
+    //置顶
+    private Integer isTop;
+
     public Boolean getIsFront() {
         return isFront;
     }
@@ -130,4 +133,11 @@ public class ArticleQueryDTO extends CommonQueryDTO {
         this.top = top;
     }
 
+    public Integer getIsTop() {
+        return isTop;
+    }
+
+    public void setIsTop(Integer isTop) {
+        this.isTop = isTop;
+    }
 }

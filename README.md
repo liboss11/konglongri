@@ -1,10 +1,10 @@
-# 天梯（tianti）
+# 亲子小窝（tianti）
   ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/book.jpg)[配套书籍>>>](https://yuedu.baidu.com/ebook/7a5efa31fbd6195f312b3169a45177232f60e487)<br>
-  [天梯](https://yuedu.baidu.com/ebook/7a5efa31fbd6195f312b3169a45177232f60e487)简介：<br>
+  [亲子小窝](https://yuedu.baidu.com/ebook/7a5efa31fbd6195f312b3169a45177232f60e487)简介：<br>
   
-    1、天梯是一款使用Java编写的免费的轻量级CMS系统，目前提供了从后台管理到前端展现的整体解决方案。
+    1、亲子小窝是一款使用Java编写的免费的轻量级CMS系统，目前提供了从后台管理到前端展现的整体解决方案。
     2、用户可以不编写一句代码，就制作出一个默认风格的CMS站点。
-    3、前端页面自适应，支持PC和H5端，采用前后端分离的机制实现。后端支持天梯蓝和天梯红换肤功能。
+    3、前端页面自适应，支持PC和H5端，采用前后端分离的机制实现。后端支持亲子小窝蓝和亲子小窝红换肤功能。
     4、项目技术分层明显，用户可以根据自己的业务模块进行相应地扩展，很方便二次开发。
    
   ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/tiantiframework.png)  <br>
@@ -44,9 +44,9 @@
        2.1、tianti-common：系统基础服务抽象，包括entity、dao和service的基础抽象；
        2.2、tianti-org：用户权限模块服务实现；
        2.3、tianti-cms:资讯类模块服务实现；
-       2.4、tianti-module-admin：天梯后台web项目实现；
-       2.5、tianti-module-interface：天梯接口项目实现；
-       2.6、tianti-module-gateway：天梯前端自适应项目实现（是一个静态项目，调用tianti-module-interface获取数据）；
+       2.4、tianti-module-admin：亲子小窝后台web项目实现；
+       2.5、tianti-module-interface：亲子小窝接口项目实现；
+       2.6、tianti-module-gateway：亲子小窝前端自适应项目实现（是一个静态项目，调用tianti-module-interface获取数据）；
         
   
   前端项目概览：<br>
@@ -60,9 +60,9 @@
      ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/gateway/h5/detail.png)  
  <br>
   后台项目概览：<br>
-     天梯登陆页面：
+     亲子小窝登陆页面：
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/login.png)  
-     天梯蓝风格（默认）：
+     亲子小窝蓝风格（默认）：
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/userlist.png)
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/rolelist.png)
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/menulist.png)                                           
@@ -73,7 +73,7 @@
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/addlanmu.png)
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/articlelist.png)
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/addarticle.png)  
-   天梯红风格：
+   亲子小窝红风格：
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/red/userlist.png)
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/red/rolelist.png)
     ![image](https://raw.githubusercontent.com/xujeff/tianti/master/screenshots/red/menulist.png)                                       

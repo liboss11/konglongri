@@ -170,6 +170,34 @@ public class CmsApi {
         return ajaxResult;
     }
 
+    @RequestMapping("/article/column")
+    @ResponseBody
+    public AjaxResult getColumnArticle(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        AjaxResult ajaxResult = new AjaxResult();
+        String columnId = request.getParameter("columnId");
+        ArticleQueryDTO articleQueryDTO = new ArticleQueryDTO();
+        articleQueryDTO.setColumnId(columnId);
+        articleQueryDTO.setDeleteFlag(Article.DELETE_FLAG_NORMAL);
+        articleQueryDTO.setType("zhiding");
+        List<Article> list = this.articleService.queryArticleList(articleQueryDTO);
+
+        Article article = null;
+        if (list != null && list.size() > 0) {
+            article = list.get(0);
+            if (article != null) {
+                article.setViewCount(article.getViewCount() == null ? 1 : article.getViewCount() + 1);
+                this.articleService.update(article);
+            }
+        }
+        ajaxResult.setSuccess(true);
+        ajaxResult.setData(article);
+        return ajaxResult;
+    }
+
     /**
      * 获取下一篇文章详情
      *

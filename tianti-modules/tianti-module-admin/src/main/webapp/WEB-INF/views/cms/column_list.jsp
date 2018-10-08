@@ -162,6 +162,7 @@
                                 </td>
                                 <td>
                                     <div class="t_link">
+                                        <a href="javascript:myQrcode('${c.id }');">二维码</a>
                                         <a href="javascript:myEdit('${c.id }');"><i class="icon"></i>编辑</a>
                                         <c:choose>
                                             <c:when test="${c.deleteFlag eq '0' }">
@@ -213,6 +214,39 @@
                 }
             });
         });
+    }
+
+    function myQrcode(id) {
+        var loadIdx = layer.load();
+        var title = '添加栏目';
+        layer.open({
+            title: title,
+            type: 1,
+            area: ['700px', '450px'],
+            content: '<div id="qrcodeCanvas"></div>',
+            btn: ['确定', '取消'],
+            yes: function (index, layero) {
+                mySubmit();
+            },
+            btn2: function (index, layero) {
+                layer.close(index);
+            },
+            success: function (layero, index) {
+                console.log(layero, index);
+                var div = layero.find('#qrcodeCanvas');
+                console.log(div);
+                div.qrcode({
+                    render: "canvas",
+                    text: "http://konglongri.cn/tianti/article.html?columnId=" + id,
+                    width: "200",               //二维码的宽度   
+                    height: "200",              //二维码的高度   
+                    background: "#ffffff",       //二维码的后景色   
+                    foreground: "#000000",        //二维码的前景色   
+                    src: '/static/images/timg.jpg'             //二维码中间的图片
+                });
+            }
+        });
+
     }
 
 

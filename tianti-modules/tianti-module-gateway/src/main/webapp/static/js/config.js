@@ -59,7 +59,8 @@ window.path = {
     cmsApiArticleList: window.serverPath + "cms/api/article/list",
     cmsApiArticleDetail: window.serverPath + "cms/api/article/detail",
     cmsApiArticleNext: window.serverPath + "cms/api/article/next",
-    cmsApiArticlePre: window.serverPath + "cms/api/article/pre"
+    cmsApiArticlePre: window.serverPath + "cms/api/article/pre",
+    cmsApiArticleColumn: window.serverPath + "cms/api/article/column"
 }
 
 window.arraySortASC = function (array, keyName) {
