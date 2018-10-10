@@ -71,6 +71,8 @@ public class Article extends BaseEntity {
     //排序
     private Integer orderNo;
 
+    private String desc;
+
     @ManyToOne
     @JoinColumn(name = "column_info_id")
     public ColumnInfo getColumnInfo() {
@@ -199,4 +201,11 @@ public class Article extends BaseEntity {
         this.orderNo = orderNo;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

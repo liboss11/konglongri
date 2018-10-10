@@ -101,6 +101,9 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    </bean>
+
     <!-- production环境 -->
     <beans profile="production">
         <context:property-placeholder ignore-unresolvable="true"

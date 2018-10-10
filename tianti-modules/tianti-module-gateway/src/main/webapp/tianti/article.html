@@ -2,27 +2,25 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="shortcut icon" href="../favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>展览资讯</title>
+    <title>亲子小窝</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
 
     <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 
-    <script src="../../static/js/common.js"></script>
-    <script src="../../static/js/config.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="../static/js/common.js"></script>
+    <script src="../static/js/config.js"></script>
 
     <script type="text/javascript">
         //window.articleId = jc.param.get("articleId");
@@ -41,22 +39,52 @@
                     $(document).attr('title', data.title);
                 }
 
+                window.resource("apiWxConfig", {
+                    url: location.href
+                }, function (result) {
+                    share(data, result);
+
+                });
+
             });
 
+            function share(data, jssdk) {
+                // 获取jssdk需要的数据
+                // 配置功能
+                wx.config({
+                    debug: false,
+                    appId: jssdk.appId,
+                    timestamp: parseInt(jssdk.timestamp),
+                    nonceStr: jssdk.nonceStr,
+                    signature: jssdk.signature,
+                    jsApiList: [
+                        "updateAppMessageShareData",
+                        "updateTimelineShareData "
+                    ]
+                });
+                wx.ready(function () {
+                    wx.updateTimelineShareData({
+                        title: data.title, // 分享标题
+                        link: location.href, // 分享链接
+                        imgUrl: data.coverImageUrl // 分享图标
+                    }, function (res) {
+                        //这里是回调函数
+                    });
+                    wx.updateAppMessageShareData({
+                        title: data.title, // 分享标题
+                        desc: data.title,
+                        link: location.href, // 分享链接
+                        imgUrl: data.coverImageUrl // 分享图标
+                    }, function (res) {
+                        //这里是回调函数
+                    });
+                });
+            }
         }
+
 
     </script>
-    <script type="text/javascript">
 
-        window.detailPrev = function (articleId) {
-            window.router("menuAndDetail", {articleId: articleId});
-        }
-
-        window.detailNext = function (articleId) {
-            window.router("menuAndDetail", {articleId: articleId});
-        }
-
-    </script>
 
 
 </head>
@@ -93,12 +121,7 @@
                             data-was-processed="true">
                         <span style="clear: both;"></span></div>
                     <img style="display:none;" src="../../resourse/img/83151-200.png">
-                    <!--<div class="f_left">
-                        <a href="javascript:;">上一篇</a>
-                    </div>
-                    <div class="f_right">
-                        <a href="javascript:;">下一篇</a>
-                    </div>-->
+
                 </div>
 
             </div>

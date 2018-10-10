@@ -9,6 +9,7 @@ import com.jeff.tianti.cms.service.ArticleService;
 import com.jeff.tianti.cms.service.ColumnInfoService;
 import com.jeff.tianti.common.dto.AjaxResult;
 import com.jeff.tianti.common.entity.PageModel;
+import com.jeff.tianti.util.Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ public class CmsApi {
      * 获取栏目列表
      *
      * @param request
-     * @param model
+     * @param response
      * @return
      */
     @RequestMapping("/column/list")
@@ -82,7 +83,7 @@ public class CmsApi {
      * 获取文章列表
      *
      * @param request
-     * @param model
+     * @param response
      * @return
      */
     @RequestMapping("/article/list")
@@ -145,7 +146,7 @@ public class CmsApi {
      * 获取文章详情
      *
      * @param request
-     * @param model
+     * @param response
      * @return
      */
     @RequestMapping("/article/detail")
@@ -189,6 +190,8 @@ public class CmsApi {
         if (list != null && list.size() > 0) {
             article = list.get(0);
             if (article != null) {
+                /*String text = Utils.extractText(article.getContent()).substring(0,30);
+                article.setDesc(text);*/
                 article.setViewCount(article.getViewCount() == null ? 1 : article.getViewCount() + 1);
                 this.articleService.update(article);
             }
@@ -202,7 +205,7 @@ public class CmsApi {
      * 获取下一篇文章详情
      *
      * @param request
-     * @param model
+     * @param response
      * @return
      */
     @RequestMapping("/article/next")
@@ -250,7 +253,7 @@ public class CmsApi {
      * 获取上一篇文章详情
      *
      * @param request
-     * @param model
+     * @param response
      * @return
      */
     @RequestMapping("/article/pre")

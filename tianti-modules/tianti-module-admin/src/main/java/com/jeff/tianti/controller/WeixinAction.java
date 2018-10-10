@@ -8,9 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,13 @@ import java.util.Random;
 @RequestMapping("/api/wx")
 public class WeixinAction {
     private static final Logger logger = LoggerFactory.getLogger(WeixinAction.class);
-    private static final String appId = "appId";
+    /* private static final String appId = "wx3b4f0106ccfcb235";
+     private static final String secret = "ece4ec2cb026cc9270db7b39789b02ea";*/
+    @Value("${wx.appId}")
+    private String appId;
+    @Value("${wx.secret}")
+    private String secret;
+
     private static final long timeout = 7000 * 1000;
     @Autowired
     RestTemplate restTemplate;
@@ -33,12 +38,12 @@ public class WeixinAction {
 
     @RequestMapping("/config")
     public AjaxResult getWXConfigSignature(HttpServletRequest request, HttpServletResponse response,
-                                           @RequestBody JSONObject reqJson) {
+                                           @RequestParam("url") String url) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-        String url = reqJson.getString("url");
+
         logger.info("原始URL: " + url);
         long timeStampSec = System.currentTimeMillis() / 1000;
         String timestamp = String.format("%010d", timeStampSec);
@@ -82,7 +87,7 @@ public class WeixinAction {
     }
 
     private String getWXaccessToken() {
-        String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + appId + "&secret=secret";
+        String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + appId + "&secret=" + secret;
         String resp = restTemplate.getForObject(url, String.class);
         JSONObject resJson = JSONObject.parseObject(resp);
         logger.info("获取到access_token：" + resJson.getString("access_token"));
