@@ -597,7 +597,7 @@ a.abtn.default {
 
 .J_detail .d_header {
     padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }
 
 .J_detail .d_header .h_title {
@@ -624,9 +624,11 @@ a.abtn.default {
 }
 
 .J_detail .d_footer {
-    margin-top: 40px;
-    padding: 20px 0;
-    border-top: 1px solid #ddd;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+    text-align: center;
+    /*border-top: 1px solid #ddd;*/
     color: #afafaf;
 }
 
