@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/tianti-modules/tianti-module-admin" />
     <file type="web" url="file://$PROJECT_DIR$/tianti-modules/tianti-module-gateway" />
     <file type="web" url="file://$PROJECT_DIR$/tianti-modules/tianti-module-interface" />
+    <file type="web" url="file://$PROJECT_DIR$/tianti-modules/tianti-module-mobile" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

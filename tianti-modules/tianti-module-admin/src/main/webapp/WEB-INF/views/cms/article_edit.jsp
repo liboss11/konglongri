@@ -106,7 +106,18 @@
                             </div>
                         </td>
                     </tr>
-
+                    <tr>
+                        <td class="l_title w200">摘要：<font color="red">*</font></td>
+                        <td>
+                            <div class="J_toolsBar fl">
+                                <div class="t_text w600 ml10">
+                                    <label>
+                                        <input type="text" name="remark" value="${article.remark}">
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     <tr id="contentTr">
                         <td class="l_title w200">内容：</td>
                         <td>
@@ -172,6 +183,18 @@
                                 <div class="t_text w200 ml10">
                                     <label>
                                         <input type="text" name="publisher" value="${article.publisher }">
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l_title w200">公司名称：</td>
+                        <td>
+                            <div class="J_toolsBar fl">
+                                <div class="t_text w200 ml10">
+                                    <label>
+                                        <input type="text" name="companyName" value="${article.companyName }">
                                     </label>
                                 </div>
                             </div>

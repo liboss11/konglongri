@@ -8,6 +8,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.jeff.tianti.util.FreemarkerUtil;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +28,7 @@ import com.jeff.tianti.cms.service.ColumnInfoService;
 import com.jeff.tianti.common.dto.AjaxResult;
 import com.jeff.tianti.common.entity.PageModel;
 import com.jeff.tianti.util.Constants;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 /**
  * CMS的Controller
@@ -368,6 +372,7 @@ public class CmsController {
         model.addAttribute("rootCoulumnInfoList", rootCoulumnInfoList);
         model.addAttribute(Constants.MENU_NAME, Constants.MENU_ARTICLE_LIST);
 
+
         return "/cms/article_edit";
     }
 
@@ -394,6 +399,8 @@ public class CmsController {
             String href = request.getParameter("href");
             String orderNoStr = request.getParameter("orderNo");
             String articleTypeStr = request.getParameter("articleType");
+            String remark = request.getParameter("remark");
+            String companyName = request.getParameter("companyName");
 
             Article article = null;
             Integer orderNo = null;
@@ -418,6 +425,7 @@ public class CmsController {
                     articleType = 2;
                 }
             }
+
             if (StringUtils.isNotBlank(id)) {
                 article = this.articleService.find(id);
                 article.setTitle(title);
@@ -430,6 +438,8 @@ public class CmsController {
                 article.setUpdateDate(new Date());
                 article.setOrderNo(orderNo);
                 article.setHref(href);
+                article.setRemark(remark);
+                article.setCompanyName(companyName);
                 if (StringUtils.isNotBlank(coverImageUrl)) {
                     article.setCoverImageUrl(coverImageUrl);
                 }
@@ -448,6 +458,8 @@ public class CmsController {
                 article.setIsAudit(true);
                 article.setOrderNo(orderNo);
                 article.setHref(href);
+                article.setRemark(remark);
+                article.setCompanyName(companyName);
                 if (StringUtils.isNotBlank(coverImageUrl)) {
                     article.setCoverImageUrl(coverImageUrl);
                 }
@@ -458,12 +470,42 @@ public class CmsController {
             } else {
                 this.articleService.save(article);
             }
+            createHtml(article);
+
             ajaxResult.setSuccess(true);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         return ajaxResult;
+    }
+
+    @Autowired
+    private FreeMarkerConfigurer freeMarkerConfigurer;
+
+    private void createHtml(Article article) throws Exception {
+        // 获取核心对象
+        Configuration cfg = this.freeMarkerConfigurer.getConfiguration();
+        Map<String, Object> data = new HashMap<>();
+        data.put("title", article.getTitle());
+        data.put("publisher", article.getPublisher());
+        data.put("companyName", article.getCompanyName());
+        data.put("content", article.getContent());
+        data.put("viewCount", article.getViewCount());
+        data.put("remark", article.getRemark());
+        data.put("praiseCount", article.getPraiseCount());
+
+        String staticPageName = article.getStaticPath();
+        boolean isFirst = false;
+        if (StringUtils.isBlank(staticPageName)) {
+            isFirst = true;
+            staticPageName = "article_" + article.getId();
+        }
+        FreemarkerUtil.createStaticPage(cfg, staticPageName, data, "article.ftl");
+        if (isFirst) {
+            article.setStaticPath(staticPageName);
+            this.articleService.update(article);
+        }
     }
 
     /**

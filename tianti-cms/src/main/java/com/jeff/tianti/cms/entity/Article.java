@@ -71,7 +71,14 @@ public class Article extends BaseEntity {
     //排序
     private Integer orderNo;
 
-    private String desc;
+    private String remark;
+
+    private String staticPath;
+
+    private String companyName;
+
+    //点赞数
+    private Integer praiseCount;
 
     @ManyToOne
     @JoinColumn(name = "column_info_id")
@@ -201,11 +208,40 @@ public class Article extends BaseEntity {
         this.orderNo = orderNo;
     }
 
-    public String getDesc() {
-        return desc;
+    @Column(name = "remark")
+    @Lob
+    public String getRemark() {
+        return remark;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Column(name = "staticPath")
+    public String getStaticPath() {
+        return staticPath;
+    }
+
+    public void setStaticPath(String staticPath) {
+        this.staticPath = staticPath;
+    }
+
+    @Column(name = "praiseCount")
+    public Integer getPraiseCount() {
+        return praiseCount;
+    }
+
+    public void setPraiseCount(Integer praiseCount) {
+        this.praiseCount = praiseCount;
+    }
+
+    @Column(name = "companyName")
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
