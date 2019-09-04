@@ -39,7 +39,7 @@
                         <i class="icon"></i>查询
                     </a>
                 </div>
-                <div class="t_button ml10">
+                <div class="t_button ml10" style="display: none;">
                     <a class="abtn blue" href="javascript:myEdit();">
                         <i class="icon"></i>新增
                     </a>
@@ -163,7 +163,7 @@
                                 <td>
                                     <div class="t_link">
                                         <a href="javascript:myQrcode('${c.id }');">二维码</a>
-                                        <a href="javascript:myEdit('${c.id }');"><i class="icon"></i>编辑</a>
+                                        <%--<a href="javascript:myEdit('${c.id }');" style="display: none;"><i class="icon"></i>编辑</a>
                                         <c:choose>
                                             <c:when test="${c.deleteFlag eq '0' }">
                                                 <a href="javascript:updDeleteFlag('${c.id }', '1');"><i
@@ -173,7 +173,7 @@
                                                 <a href="javascript:updDeleteFlag('${c.id }', '0');"><i
                                                         class="icon"></i>恢复</a>
                                             </c:otherwise>
-                                        </c:choose>
+                                        </c:choose>--%>
                                     </div>
                                 </td>
                             </tr>

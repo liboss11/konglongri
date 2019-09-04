@@ -21,7 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * CMS的Controller
@@ -298,4 +300,36 @@ public class CmsApi {
         return ajaxResult;
     }
 
+    /**
+     * 获取文章详情
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("/article/getArticleinfo")
+    @ResponseBody
+    public AjaxResult getArticleinfo(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        AjaxResult ajaxResult = new AjaxResult();
+        String articleId = request.getParameter("articleId");
+        Article article = null;
+        int count = 0;
+        if (StringUtils.isNotBlank(articleId)) {
+            article = this.articleService.find(articleId);
+            if (article != null) {
+                count = article.getViewCount() == null ? 1 : article.getViewCount() + 1;
+                article.setViewCount(count);
+                this.articleService.update(article);
+            }
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("viewCount", count);
+        ajaxResult.setSuccess(true);
+        ajaxResult.setData(map);
+        return ajaxResult;
+    }
 }

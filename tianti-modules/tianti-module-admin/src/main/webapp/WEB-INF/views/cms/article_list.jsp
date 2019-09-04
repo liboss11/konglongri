@@ -87,7 +87,7 @@
                     <input placeholder="标题" type="text" style="width:200px" id="title" name="title"
                            value="${articleQueryDTO.title }">
                 </div>
-                <div class="t_text ml10">
+                <div class="t_text ml10" style="display: none;">
                     <input placeholder="发布人" type="text" style="width:200px" id="publisher" name="publisher"
                            value="${articleQueryDTO.publisher }">
                 </div>

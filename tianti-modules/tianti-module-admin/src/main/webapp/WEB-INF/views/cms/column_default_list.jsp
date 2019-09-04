@@ -29,7 +29,7 @@
                         <i class="icon"></i>查询
                     </a>
                 </div>
-                <div class="t_button ml10">
+                <div class="t_button ml10" style="display: none;">
                     <a class="abtn blue" href="javascript:myEdit('','level1');">
                         <i class="icon"></i>新增二级栏目
                     </a>
@@ -56,7 +56,7 @@
                                 </c:forEach>
 
                             </div>
-                            <div class="m_btn">
+                            <div class="m_btn" style="display: none;">
                                 <a href="javascript:myEdit('','level0');"><i class="icon"></i><span>添加</span></a>
                                 <a href="javascript:myEdit('${columnInfoQueryDTO.rootColumnId }','level0');"><i
                                         class="icon"></i><span>修改</span></a>
@@ -185,7 +185,7 @@
                                         <td>
                                             <div class="t_link">
                                                 <a href="javascript:myQrcode('${c.id }');">二维码</a>
-                                                <a href="javascript:myEdit('${c.id }','level1');"><i class="icon"></i>编辑</a>
+                                               <%-- <a href="javascript:myEdit('${c.id }','level1');"><i class="icon"></i>编辑</a>
                                                 <c:choose>
                                                     <c:when test="${c.deleteFlag eq '0' }">
                                                         <a href="javascript:updDeleteFlag('${c.id }', '1');"><i
@@ -195,7 +195,7 @@
                                                         <a href="javascript:updDeleteFlag('${c.id }', '0');"><i
                                                                 class="icon"></i>恢复</a>
                                                     </c:otherwise>
-                                                </c:choose>
+                                                </c:choose>--%>
                                             </div>
                                         </td>
                                     </tr>

@@ -82,7 +82,7 @@ public class ShiroDBRealm extends AuthorizingRealm {
         User user = userService.findUserByName(token.getUsername());
         if (user != null) {
 
-            if (user.getStatus() == User.STATUS_NO) {
+            if (user.getStatus().equals(User.STATUS_NO)) {
                 throw new LockedAccountException();
             }
 

@@ -86,9 +86,9 @@
                                 <div class="t_check ml10">
                                     <label><input name="articleType" type="radio" value="contentType"
                                                   <c:if test="${article.type == null || article.type == 0 }">checked="checked"</c:if> />内容文章</label>
-                                    <label><input name="articleType" type="radio" value="hrefType"
+                                    <label style="display: none;"><input name="articleType" type="radio" value="hrefType"
                                                   <c:if test="${article.type == 1 }">checked="checked"</c:if>/>外链文章</label>
-                                    <label><input name="articleType" type="radio" value="adType"
+                                    <label style="display: none;"><input name="articleType" type="radio" value="adType"
                                                   <c:if test="${article.type == 2 }">checked="checked"</c:if>/>广告位</label>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr style="display: none;">
                         <td class="l_title w200">发布人：</td>
                         <td>
                             <div class="J_toolsBar fl">

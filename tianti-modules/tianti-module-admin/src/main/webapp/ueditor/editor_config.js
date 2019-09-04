@@ -20,6 +20,7 @@
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
     var context_ = "http://admin.konglongri.cn";
+   // var context_ = "http://localhost:8080";
 
     window.UEDITOR_HOME_URL = context_ + "/ueditor/";
 

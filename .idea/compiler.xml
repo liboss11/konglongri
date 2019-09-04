@@ -7,12 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tianti-cms" />
-        <module name="tianti-common" />
         <module name="tianti-module-admin" />
-        <module name="tianti-module-gateway" />
         <module name="tianti-module-interface" />
         <module name="tianti-module-mobile" />
         <module name="tianti-org" />
+        <module name="tianti-common" />
+        <module name="tianti-module-gateway" />
       </profile>
     </annotationProcessing>
   </component>

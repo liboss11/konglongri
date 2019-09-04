@@ -8,10 +8,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.jeff.tianti.org.entity.User;
 import com.jeff.tianti.util.FreemarkerUtil;
+import com.jeff.tianti.util.WebHelper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -278,7 +281,8 @@ public class CmsController {
         if (StringUtils.isNotBlank(pageSizeStr)) {
             pageSize = Integer.parseInt(pageSizeStr);
         }
-
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute(WebHelper.SESSION_LOGIN_USER);
+        publisher = user.getUsername();
         ColumnInfoQueryDTO columnInfoQueryDTO = new ColumnInfoQueryDTO();
         columnInfoQueryDTO.setLevel(ColumnInfo.LEVEL_ROOT);
         List<ColumnInfo> rootCoulumnInfoList = this.columnInfoService.queryColumnInfoList(columnInfoQueryDTO);
@@ -464,7 +468,8 @@ public class CmsController {
                     article.setCoverImageUrl(coverImageUrl);
                 }
             }
-
+            User user = (User) SecurityUtils.getSubject().getSession().getAttribute(WebHelper.SESSION_LOGIN_USER);
+            article.setPublisher(user.getUsername());
             if (StringUtils.isNotBlank(id)) {
                 this.articleService.update(article);
             } else {
@@ -483,10 +488,11 @@ public class CmsController {
     @Autowired
     private FreeMarkerConfigurer freeMarkerConfigurer;
 
-    private void createHtml(Article article) throws Exception {
+    private void createHtml( Article article) throws Exception {
         // 获取核心对象
         Configuration cfg = this.freeMarkerConfigurer.getConfiguration();
         Map<String, Object> data = new HashMap<>();
+        data.put("articleId", article.getId());
         data.put("title", article.getTitle());
         data.put("publisher", article.getPublisher());
         data.put("companyName", article.getCompanyName());
